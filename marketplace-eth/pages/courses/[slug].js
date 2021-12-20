@@ -18,7 +18,7 @@ export default function Course({course}) {
         points = {course.wsl}
       />
       <Curriculum 
-        locked={true}
+        locked={false}
       />
       <Modal />
     </>

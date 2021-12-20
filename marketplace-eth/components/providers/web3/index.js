@@ -1,6 +1,6 @@
 import detectEthereumProvider from "@metamask/detect-provider"
 import Web3 from "web3"
-import React from "react"
+import React, { useState, useEffect, useMemo } from "react"
 
 export { default as EthRates } from "./ethRates"
 export { default as WalletBar } from "./walletbar"
@@ -10,42 +10,52 @@ const {createContext, useContext} = require("react")
 const Web3Context = createContext(null)
 
 export default function Web3Provider({children}) {
-    const [web3Api, setWeb3Api] = React.useState({
+    const [web3Api, setWeb3Api] = useState({
         provider: null,
         web3: null,
         contract: null,
-        isLoading: false
+        isInitialized: false
     })
-    React.useEffect(() => {
+    
+    useEffect(() => {
         const loadProvider = async () => {
-            const provider = await detectEthereumProvider()
-            if(provider){
-                const web3 = new Web3(provider)
-                setWeb3Api({
-                    provider,
-                    web3,
-                    contract: null,
-                    isLoading: true
-                })
-            } else {
-                setWeb3Api(api => ({...api, isLoading:true}))
-                console.error("Please install MetaMask.")
-            }
+    
+        const provider = await detectEthereumProvider()
+        if (provider) {
+            const web3 = new Web3(provider)
+            setWeb3Api({
+              provider,
+              web3,
+              contract: null,
+              isInitialized: true
+            })
+        } else {
+            setWeb3Api(api => ({...api, isInitialized: true}))
+            console.error("Please, install MetaMask.")
         }
-
-        loadProvider()
+    }
+    
+    loadProvider()
     }, [])
 
-    const _web3Api = React.useMemo(() => {
+    const _web3Api = useMemo(() => {
         return {
             ...web3Api,
-            connect: () => console.log("Trying to connect"),
-            test: () => console.log("Hello World")
+            isWeb3Loaded: web3Api.web3 != null,
+            connect: web3Api.provider ? 
+            async () => {
+                try{
+                    await web3Api.provider.request({method: "eth_requestAccounts"})
+                } catch {
+                    location.reload()
+                }
+            } :
+            () => console.error("Cannot connect to MetaMask, try to reload your browser.")
         }
     }, [web3Api])
 
     return (
-        <Web3Context.Provider value={web3Api}>
+        <Web3Context.Provider value={_web3Api}>
             {children}
         </Web3Context.Provider>
     )
