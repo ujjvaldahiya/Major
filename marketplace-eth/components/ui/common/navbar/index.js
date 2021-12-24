@@ -52,9 +52,15 @@ export default function Footer() {
                 onClick={connect}>
                   Loading...
               </Button> : isWeb3Loaded ?
+                account ?
+                <Button 
+                  hoverable={false}
+                  className="cursor-default">
+                  Hi there...
+                </Button> :
                 <Button
                   onClick={connect}>
-                    Connect
+                  Connect
                 </Button> :
                 <Button
                   onClick={() => window.open("https://metamask.io/download.html")}>
