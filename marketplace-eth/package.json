@@ -11,7 +11,6 @@
     "@metamask/detect-provider": "^1.2.0",
     "next": "12.0.3",
     "react": "17.0.2",
-    "react-bootstrap": "^2.0.4",
     "react-dom": "17.0.2",
     "swr": "^1.1.1",
     "web3": "^1.6.1"

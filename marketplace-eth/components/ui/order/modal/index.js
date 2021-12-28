@@ -63,7 +63,7 @@ export default function OrderModal({course, onClose}) {
                 </div>
                 <div className="my-2 relative rounded-md">
                     <div className="mb-1">
-                    <label className="mb-2 font-bold">Repeat Email</label>
+                    <label className="mb-2 font-bold">Confirm Email</label>
                     </div>
                     <input
                     type="email"

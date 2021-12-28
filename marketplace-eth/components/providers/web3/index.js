@@ -3,9 +3,6 @@ import Web3 from "web3"
 import React, { useState, useEffect, useMemo } from "react"
 import { setupHooks } from "./hooks/setupHooks"
 
-export { default as EthRates } from "./ethRates"
-export { default as WalletBar } from "./walletbar"
-
 const {createContext, useContext} = require("react")
 
 const Web3Context = createContext(null)
