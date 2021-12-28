@@ -8,7 +8,7 @@ export default function Breadcrumbs({items}) {
         { items.map((item, i) =>
           <li key={item.href} className={`${i==0? "pr-4":"px-4"} font-medium text-gray-500 hover:text-gray-900`}>
             <ActiveLink href={item.href}>  
-              <a className="text-lg">
+              <a>
                 {item.value}
               </a>
             </ActiveLink>

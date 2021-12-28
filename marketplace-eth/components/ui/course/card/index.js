@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export default function Card({course, disabled, Footer}) {
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+    <div className="bg-white rounded-xl border overflow-hidden md:max-w-2xl">
         <div className="flex h-full">
         <div className="flex-1 h-full">
             <Image 
