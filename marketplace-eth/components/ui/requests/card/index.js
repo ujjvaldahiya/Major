@@ -1,32 +1,32 @@
 import Image from "next/dist/client/image"
 import Link from "next/link"
 
-export default function Card({course, disabled, Footer}) {
+export default function Card({request, disabled, Footer}) {
   return (
     <div className="bg-white rounded-xl border overflow-hidden md:max-w-2xl">
         <div className="flex h-full">
         <div className="flex-1 h-full" style={{width: '100%', height: '100%', position: 'relative'}}>
             <Image 
             className={`object-cover ${disabled && "filter grayscale"}`} 
-            src={course.coverImage}
+            src={request.coverImage}
             layout="fill" 
-            alt={course.title}
+            alt={request.title}
             />
         </div>
         <div className="p-8 pb-4 flex-2">
             <div 
             className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-            {course.type}
+            {request.type}
             </div>
-            <Link href={`/courses/${course.slug}`}>
+            <Link href={`/requests/${request.slug}`}>
             <a 
                 className="h-12 block mt-1 text-sm sm:text-lg leading-tight font-medium text-black hover:underline">
-                {course.title}
+                {request.title}
             </a>
             </Link>
             <p 
             className="mt-2 text-sm sm:text-base text-gray-500">
-            {course.description.substring(0,90)}...
+            {request.description.substring(0,90)}...
             </p>
             {
               Footer &&

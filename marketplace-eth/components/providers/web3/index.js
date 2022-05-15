@@ -28,21 +28,21 @@ export default function Web3Provider({children}) {
     useEffect(() => {
         const loadProvider = async () => {
     
-        const provider = await detectEthereumProvider()
-        if (provider) {
-            const web3 = new Web3(provider)
-            const contract = await loadContract("ItemMarketPlace", web3)
-            setWeb3Api(createWeb3State({
-                web3,
-                provider,
-                contract,
-                isLoading: false
-            }))
-        } else {
-            setWeb3Api(api => ({...api, isLoading: false}))
-            console.error("Please, install MetaMask.")
+            const provider = await detectEthereumProvider()
+            if (provider) {
+                const web3 = new Web3(provider)
+                const contract = await loadContract("ItemMarketPlace", web3)
+                setWeb3Api(createWeb3State({
+                    web3,
+                    provider,
+                    contract,
+                    isLoading: false
+                }))
+            } else {
+                setWeb3Api(api => ({...api, isLoading: false}))
+                console.error("Please, install MetaMask.")
+            }
         }
-    }
     
     loadProvider()
     }, [])

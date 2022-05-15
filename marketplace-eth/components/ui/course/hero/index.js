@@ -4,7 +4,8 @@ import Image from "next/image"
 export default function Hero({
   title,
   description,
-  image
+  image,
+  hasOwner
 }) {
 
   return (
@@ -19,9 +20,14 @@ export default function Hero({
             </div>
             <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
               <div className="sm:text-center lg:text-left">
+                {
+                  hasOwner && 
+                  <div className="text-md inline-block p-4 py-2 rounded-full font-bold bg-green-200 text-green-700">
+                    Owned 
+                  </div>
+                }
                 <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                  <span className="block xl:inline">{title.substring(0, title.length/2)}</span>
-                  <span className="block text-indigo-600 xl:inline">{title.substring(title.length/2)}</span>
+                  <span className="block xl:inline">{title}</span>
                 </h1>
                 <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                   {description}

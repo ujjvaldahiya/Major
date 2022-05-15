@@ -157,7 +157,7 @@ export default function OrderModal({course, onClose, onSubmit}) {
                 </div>
                 {
                     formState.message && 
-                    <div className="p-4 my-3 text-red-700 bg-red-200 rounded-lg text-sm">
+                    <div className="p-4 my-3 mr-4 text-red-700 bg-red-200 rounded-lg text-sm">
                         {formState.message}
                     </div>
                 }

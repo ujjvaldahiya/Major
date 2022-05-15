@@ -7,12 +7,10 @@ import { MarketHeader } from "@components/ui/marketplace";
 export default function ManageOrders() {
     return (
         <>
-            <div className="py-4">
-                <MarketHeader/>
-                <CourseFilter/>
-            </div>
+            <MarketHeader/>
+            <CourseFilter/>
             <section className="grid grid-cols-1">
-                <OwnedCourseCard>
+                {/*<OwnedCourseCard>
                 <div className="flex mr-2 relative rounded-md">
                     <div className="pr-1">
                         <input
@@ -26,7 +24,7 @@ export default function ManageOrders() {
                     Verify
                     </Button>
                 </div>
-                </OwnedCourseCard>
+                </OwnedCourseCard>*/}
             </section>
         </>
     )
