@@ -1,4 +1,5 @@
-
+import { Loader } from "@components/ui/common"
+import Link from "next/link"
 
 const episodes = [
   "eps1.0_hellofriend.mov",
@@ -13,7 +14,7 @@ const episodes = [
   "eps1.9_zer0-day.avi"
 ]
 
-export default function Curriculum({locked}) {
+export default function Curriculum({locked, courseState, isLoading}) {
   const statusClass = "px-2 inline-flex text-xs leading-5 font-semibold rounded-full"
   return (
     <section className="max-w-5xl mx-auto">
@@ -58,9 +59,32 @@ export default function Curriculum({locked}) {
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                          {locked ? "Get Access":"Play"}
-                        </a>
+                        {
+                          isLoading ?
+                          <Loader />:
+                          locked ? 
+                          <>
+                          { courseState === "Deactivated" &&
+                            <Link href="/marketplace">
+                              <a className="text-indigo-600 hover:text-indigo-900">
+                                Get Access
+                              </a>
+                            </Link>
+                          }
+                          { courseState === "Purchased" &&
+                            <Link href="/faq">
+                              <a className="text-yellow-500 hover:text-yellow-800">
+                                Waiting for Activation
+                              </a>
+                            </Link>
+                          }
+                          </>:
+                          <Link href="/watchs">
+                            <a className="text-green-600 hover:text-green-900">
+                              Watch
+                            </a>
+                          </Link>
+                        }
                       </td>
                     </tr>
                   )}
