@@ -13,24 +13,28 @@ const _createFormState = (isDisabled = false, message = "") => ({
     message
 })
 
-const createFormState = ({price, email, confirmationEmail}, hasAgreedTOS) => {
+const createFormState = ({price, email, confirmationEmail}, hasAgreedTOS, isNewPurchase) => {
     if(!price || Number(price)<= 0){
         return _createFormState(true, "Price is not valid.")
     }
-    else if(confirmationEmail.length == 0 || email.length == 0){
-        return _createFormState(true)
+
+    if(isNewPurchase) {
+        if(confirmationEmail.length == 0 || email.length == 0){
+            return _createFormState(true)
+        }
+        else if(email!==confirmationEmail){
+            return _createFormState(true, "Email addresses do not match.")
+        }
     }
-    else if(email!==confirmationEmail){
-        return _createFormState(true, "Email addresses do not match.")
-    }
-    else if(!hasAgreedTOS){
+    
+    if(!hasAgreedTOS){
         return _createFormState(true, "You need to agree to the terms of service.")
     }
 
     return _createFormState()
 }
 
-export default function OrderModal({course, onClose, onSubmit}) {
+export default function OrderModal({course, onClose, onSubmit, isNewPurchase}) {
     const [isOpen, setIsOpen] = useState(false)
     const [order, setOrder] = useState(defaultOrder)
     const [enablePrice, setEnablePrice] = useState(false)
@@ -54,7 +58,7 @@ export default function OrderModal({course, onClose, onSubmit}) {
         onClose()
     }
 
-    const formState = createFormState(order, hasAgreedTOS)
+    const formState = createFormState(order, hasAgreedTOS, isNewPurchase)
 
     return (
         <Modal isOpen={isOpen}>
@@ -105,44 +109,48 @@ export default function OrderModal({course, onClose, onSubmit}) {
                     Price will be verified at the time of the order. If the price is too low, order can be declined (+- 2% slippage is allowed)
                     </p>
                 </div>
-                <div className="mt-2 relative rounded-md">
-                    <div className="mb-1">
-                    <label className="mb-2 font-bold">Email</label>
+                { isNewPurchase &&
+                  <>
+                    <div className="mt-2 relative rounded-md">
+                        <div className="mb-1">
+                        <label className="mb-2 font-bold">Email</label>
+                        </div>
+                        <input
+                            onChange={({target: {value}}) => {
+                                setOrder({
+                                    ...order,
+                                    email: value.trim()
+                                })
+                            }}
+                            type="email"
+                            name="email"
+                            id="email"
+                            className="w-80 border focus:ring-indigo-500 focus:border-indigo-500 block pl-7 p-4 sm:text-sm rounded-md"
+                            placeholder="x@y.com"
+                        />
+                        <p className="text-xs text-gray-700 mt-1 pb-2">
+                        It&apos;s important to fill your correct email address, otherwise the order cannot be verified. Your personal data is not stored anywhere.
+                        </p>
                     </div>
-                    <input
-                        onChange={({target: {value}}) => {
-                            setOrder({
-                                ...order,
-                                email: value.trim()
-                            })
-                        }}
-                        type="email"
-                        name="email"
-                        id="email"
-                        className="w-80 border focus:ring-indigo-500 focus:border-indigo-500 block pl-7 p-4 sm:text-sm rounded-md"
-                        placeholder="x@y.com"
-                    />
-                    <p className="text-xs text-gray-700 mt-1 pb-2">
-                    It&apos;s important to fill your correct email address, otherwise the order cannot be verified. Your personal data is not stored anywhere.
-                    </p>
-                </div>
-                <div className="my-2 relative rounded-md">
-                    <div className="mb-1">
-                    <label className="mb-2 font-bold">Confirm Email</label>
+                    <div className="my-2 relative rounded-md">
+                        <div className="mb-1">
+                        <label className="mb-2 font-bold">Confirm Email</label>
+                        </div>
+                        <input
+                            onChange={({target: {value}}) => {
+                                setOrder({
+                                    ...order,
+                                    confirmationEmail: value.trim()
+                                })
+                            }}
+                            type="email"
+                            name="confirmationEmail"
+                            id="confirmationEmail"
+                            className="w-80 focus:ring-indigo-500 border focus:border-indigo-500 block pl-7 p-4 sm:text-sm rounded-md" placeholder="x@y.com" 
+                        />
                     </div>
-                    <input
-                        onChange={({target: {value}}) => {
-                            setOrder({
-                                ...order,
-                                confirmationEmail: value.trim()
-                            })
-                        }}
-                        type="email"
-                        name="confirmationEmail"
-                        id="confirmationEmail"
-                        className="w-80 focus:ring-indigo-500 border focus:border-indigo-500 block pl-7 p-4 sm:text-sm rounded-md" placeholder="x@y.com" 
-                    />
-                </div>
+                  </>
+                }
                 <div className="text-xs text-gray-700 flex">
                     <label className="flex items-center mr-2">
                     <input
