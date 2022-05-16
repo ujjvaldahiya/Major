@@ -1,17 +1,18 @@
 import { CourseList } from "@components/ui/course"
 import { BaseLayout } from "@components/ui/layout"
 import { getAllCourses } from "@content/courses/fetcher"
-import { useWalletInfo } from "@components/hooks/web3"
+import { useOwnedCourses, useWalletInfo } from "@components/hooks/web3"
 import { CourseCard } from "@components/ui/course"
-import { Button } from "@components/ui/common"
+import { Button, Loader } from "@components/ui/common"
 import { OrderModal } from "@components/ui/order"
 import { useState } from "react"
 import { MarketHeader } from "@components/ui/marketplace"
 import { useWeb3 } from "@components/providers"
 
 export default function Marketplace({courses}) {
-    const { web3, contract } = useWeb3()
-    const { canPurchaseCourse, account } = useWalletInfo()
+    const { web3, contract, requireInstall } = useWeb3()
+    const { hasWalletConnected, network, isConnecting, account } = useWalletInfo()
+    const { ownedCourses } = useOwnedCourses(courses, account.data, network.data)
     const [selectedCourse, setSelectedCourse] = useState(null)
 
     const purchaseCourse = async order => {
@@ -54,22 +55,79 @@ export default function Marketplace({courses}) {
         <MarketHeader/>
         <CourseList courses={courses}>
           {
-            course => 
-            <CourseCard
-              key={course.id}
-              disabled={!canPurchaseCourse} 
-              course={course}
-              Footer={() => 
-                <div className="mt-4">
-                  <Button 
-                    onClick={() => setSelectedCourse(course)}
-                    disabled={!canPurchaseCourse}
-                    variant="lightIndigo">
-                    Purchase
-                  </Button>
-                </div>
-              } 
-            />
+            course => {
+              const owned = ownedCourses.lookup[course.id]
+              return (
+              <CourseCard
+                key={course.id}
+                disabled={!hasWalletConnected} 
+                course={course}
+                state={owned?.state}
+                Footer={() => {
+                  if (requireInstall) {
+                    return (
+                      <Button
+                        size="sm"
+                        disabled={true}
+                        variant="lightIndigo">
+                        Install
+                      </Button>
+                    )
+                  }
+                  if(!ownedCourses.hasInitialResponse) {
+                    return (
+                      <div style={{height:"42px"}}></div>
+                    )
+                  }
+
+                  if(owned) {
+                    return (
+                      <>
+                        <div className="flex">
+                          <Button 
+                            onClick={() => alert("You are owner of this item.")}
+                            size="sm"
+                            disabled={false}
+                            variant="white">
+                            Yours &#10004;
+                          </Button>
+                          {
+                            owned.state === "Deactivated" && 
+                            <Button 
+                              size="sm"
+                              disabled={false}
+                              variant="lightIndigo">
+                              Activate
+                            </Button>
+                          }
+                        </div>
+                      </>
+                    )
+                  }
+
+                  if(isConnecting) {
+                    return (
+                      <Button
+                        size="sm"
+                        disabled={true}
+                        variant="lightIndigo">
+                        <Loader/>
+                      </Button>
+                    )
+                  }
+                  return (
+                      <Button 
+                        onClick={() => setSelectedCourse(course)}
+                        size="sm"
+                        disabled={!hasWalletConnected}
+                        variant="lightIndigo">
+                        Purchase
+                      </Button>
+                    )
+                  }
+                } 
+              />
+            )}
           }
         </CourseList>
         { selectedCourse &&

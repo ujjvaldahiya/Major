@@ -1,7 +1,7 @@
 [
     {
       "id": "1410474",
-      "type": "Drama, Psychological thriller, Techno-thriller",
+      "type": "Drama, Psychological, Techno-thriller",
       "title": "Mr.Robot",
       "description": "Mr. Robot follows Elliot, a young programmer who works as a cyber-security engineer by day and as a vigilante hacker by night.",
       "coverImage": "https://flxt.tmsimg.com/assets/p11682476_b_h8_af.jpg",
@@ -35,7 +35,7 @@
     },
     {
       "id": "1331625",
-      "type": "Thriller, Drama, Science fiction, Mystery, Supernatural",
+      "type": "Thriller, Drama, Sci-fi, Mystery, Supernatural",
       "title": "Dark",
       "description": "When two children go missing in a small German town, its sinful past is exposed along with the double lives and fractured relationships that exist among four families as they search for the kids.",
       "coverImage": "https://static.wikia.nocookie.net/dark-netflix/images/f/fd/Dark_Title_Screen.jpg/revision/latest/top-crop/width/360/height/360?cb=20171111233324",
@@ -154,7 +154,7 @@
     },
     {
       "id": "848148",
-      "type": "Dark Comedy, Sitcom, Adventure fiction, Animated sitcom",
+      "type": "Dark Comedy, Sitcom, Adventure fiction",
       "title": "Rick and Morty",
       "description": "Rick, an alcoholic sociopath and scientist, lives with his daughter Beth's family. Apart from building gadgets, he takes his morally right but dimwit grandson Morty on absurd intergalactic adventures.",
       "coverImage": "https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_.jpg",

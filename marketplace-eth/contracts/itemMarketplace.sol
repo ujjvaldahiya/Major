@@ -36,6 +36,9 @@ contract ItemMarketPlace {
     /// This item has already been purchased.
     error ItemHasOwner();
 
+    /// Sender is not Item Owner.
+    error SenderIsNotItemOwner();
+
     /// Only the owner has access to this method.
     error OnlyOwner();
 
@@ -59,6 +62,49 @@ contract ItemMarketPlace {
         uint id = totalOwnedItems++;
         ownedItemHash[id] = ItemHash;
         ownedItems[ItemHash] = Item({id: id, price: msg.value, proof: proof, owner: msg.sender, state: State.Purchased});
+    }
+
+    function repurchaseItem(bytes32 itemHash) 
+        external
+        payable
+    {
+        if (!isItemCreated(itemHash)){
+            revert ItemIsNotCreated();
+        }
+
+        if (!hasItemOwnership(itemHash)){
+            revert SenderIsNotItemOwner();
+        }
+
+        Item storage item = ownedItems[itemHash];
+
+        if (item.state != State.Deactivated){
+            revert InvalidState();
+        }
+
+        item.state = State.Purchased;
+        item.price = msg.value;
+    }
+
+    function deActivateItem(bytes32 itemHash)
+    external
+    onlyOwner
+    {
+        if (!isItemCreated(itemHash)) {
+        revert ItemIsNotCreated();
+        }
+
+        Item storage item = ownedItems[itemHash];
+
+        if (item.state != State.Purchased) {
+        revert InvalidState();
+        }
+
+        (bool success, ) = item.owner.call{value: item.price}("");
+        require(success, "Transfer Failed");
+
+        item.state = State.Deactivated;
+        item.price = 0;
     }
 
     function activateItem(bytes32 itemHash)

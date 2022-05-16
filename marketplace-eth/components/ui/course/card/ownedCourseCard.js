@@ -14,7 +14,7 @@ export default function OwnedCourseCard({children, course}) {
     <div className="bg-white border shadow overflow-hidden sm:rounded-lg mb-3">
       <div className="block sm:flex">
         <div className="flex-1">
-          <div className="h-full">
+          <div className="h-full" style={{height:"100%"}}>
             <Image
               className="object-cover"
               src={course.coverImage}
