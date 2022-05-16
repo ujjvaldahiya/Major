@@ -32,20 +32,8 @@ export default function Navbar() {
                 Marketplace
               </a>
             </ActiveLink>
-            <ActiveLink href="/blog">
-              <a
-                className="font-medium mr-8 text-gray-500 hover:text-gray-900">
-                Blog
-              </a>
-            </ActiveLink>
             </div>
             <div className="text-center">
-            <ActiveLink href="/wishlist">
-              <a
-                className="font-medium sm:mr-8 mr-2 text-gray-500 hover:text-gray-900">
-                Wishlist
-              </a>
-            </ActiveLink>
             { isLoading ?
               <Button
                 disabled={true}

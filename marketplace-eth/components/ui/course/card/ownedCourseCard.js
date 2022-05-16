@@ -40,15 +40,15 @@ export default function OwnedCourseCard({children, course}) {
 
           <div className="border-t border-gray-200">
             <dl>
-              <div className="bg-gray-50 px-4 py-5 sm:px-6">
+              <div className="bg-gray-50 px-4 py-3 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">
                   Order ID
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {course.ownedCourseId}
+                  {course.ItemId}
                 </dd>
               </div>
-              <div className="bg-white px-4 py-5 sm:px-6">
+              <div className="bg-white px-4 py-3 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">
                   Proof
                 </dt>
@@ -56,7 +56,7 @@ export default function OwnedCourseCard({children, course}) {
                   {course.proof}
                 </dd>
               </div>
-              <div className="bg-white px-4 py-5 sm:px-6">
+              <div className="bg-white px-4 py-2 sm:px-6">
                 {children}
               </div>
             </dl>

@@ -8,7 +8,8 @@ module.exports = {
       "m.media-amazon.com",
       "resizing.flixster.com",
       "flxt.tmsimg.com",
-      "www.tvguide.com"
+      "www.tvguide.com",
+      "thrangra.sirv.com"
     ]
   }
 }

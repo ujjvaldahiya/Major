@@ -2,16 +2,16 @@ import { Loader } from "@components/ui/common"
 import Link from "next/link"
 
 const episodes = [
-  "eps1.0_hellofriend.mov",
-  "eps1.1_ones-and-zer0es.mpeg",
-  "eps1.2_d3bug.mkv",
-  "eps1.3_da3m0ns.mp4",
-  "eps1.4_3xpl0its.wmv",
-  "eps1.5_br4ve-trave1er.asf",
-  "eps1.6_v1ew-s0urce.flv",
-  "eps1.7_wh1ter0se.m4v",
-  "eps1.8_m1rr0r1ng.qt",
-  "eps1.9_zer0-day.avi"
+  "Episode 1",
+  "Episode 2",
+  "Episode 3",
+  "Episode 4",
+  "Episode 5",
+  "Episode 6",
+  "Episode 7",
+  "Episode 8",
+  "Episode 9",
+  "Episode 10"
 ]
 
 export default function Curriculum({locked, courseState, isLoading}) {

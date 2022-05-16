@@ -27,6 +27,12 @@ contract ItemMarketPlace {
         setContractOwner(msg.sender);
     }
 
+    /// Course has invalid state!
+    error InvalidState();
+
+    /// Course is not created!
+    error ItemIsNotCreated();
+
     /// This item has already been purchased.
     error ItemHasOwner();
 
@@ -53,6 +59,23 @@ contract ItemMarketPlace {
         uint id = totalOwnedItems++;
         ownedItemHash[id] = ItemHash;
         ownedItems[ItemHash] = Item({id: id, price: msg.value, proof: proof, owner: msg.sender, state: State.Purchased});
+    }
+
+    function activateItem(bytes32 itemHash)
+    external
+    onlyOwner
+    {
+        if (!isItemCreated(itemHash)) {
+        revert ItemIsNotCreated();
+        }
+
+        Item storage item = ownedItems[itemHash];
+
+        if (item.state != State.Purchased) {
+        revert InvalidState();
+        }
+
+        item.state = State.Activated;
     }
 
     function transferOwnership(address newOwner) 
@@ -96,6 +119,14 @@ contract ItemMarketPlace {
 
     function setContractOwner(address newOwner) private {
         owner = payable(newOwner);
+    }
+
+    function isItemCreated(bytes32 itemHash)
+        private
+        view
+        returns (bool)
+    {
+        return ownedItems[itemHash].owner != 0x0000000000000000000000000000000000000000;
     }
 
     function hasItemOwnership(bytes32 ItemHash)
