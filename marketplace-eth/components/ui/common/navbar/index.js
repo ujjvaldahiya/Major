@@ -51,7 +51,8 @@ export default function Navbar() {
                     Install MetaMask
                 </Button> :
                 <Button
-                  onClick={connect}>
+                  onClick={connect}
+                  variant="lightIndigo">
                   Connect
                 </Button>
             }
@@ -62,9 +63,9 @@ export default function Navbar() {
       { account.data &&
         !pathname.includes("/marketplace") && !pathname.includes("/lb") &&
       <div className="flex justify-end pt-1 sm:px-6 lg:px-8">
-        <div className="text-white bg-indigo-600 rounded-md p-2">
+        <Button variant = "lightIndigo">
         { account.data }
-        </div>
+        </Button>
       </div>
       }
     </section>

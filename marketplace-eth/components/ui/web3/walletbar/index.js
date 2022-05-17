@@ -2,10 +2,12 @@ import { useWalletInfo } from "@components/hooks/web3"
 import { useWeb3 } from "@components/providers"
 import { Button } from "@components/ui/common"
 import Image from "next/dist/client/image"
+import { useRouter } from "next/router"
 
 export default function WalletBar() {
   const { requireInstall } = useWeb3()
   const { account, network } = useWalletInfo()
+  const router = useRouter()
 
   return (
     <section className="text-white bg-indigo-600 rounded-lg">
@@ -14,7 +16,7 @@ export default function WalletBar() {
         <h2 className="subtitle mb-5 text-sm xs:text-base">I hope you are having a great day!</h2>
         <div className="flex justify-between items-center">
           <div className="sm:flex sm:justify-center lg:justify-start">
-            <Button 
+            <Button onClick={() => router.push("/")}
               className="mr-2 text-sm xs:text-lg p-2"
               variant="white">
               <div className="flex items-center">
@@ -24,7 +26,7 @@ export default function WalletBar() {
                   width="35"
                   src="/small-eth.webp"
                 />
-                <span className="text-xl font-bold"> 
+                <span className="text-xl"> 
                   Price Trends
                 </span>
               </div>
