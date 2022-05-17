@@ -1,6 +1,7 @@
 import { useWalletInfo } from "@components/hooks/web3"
 import { useWeb3 } from "@components/providers"
 import { Button } from "@components/ui/common"
+import Image from "next/dist/client/image"
 
 export default function WalletBar() {
   const { requireInstall } = useWeb3()
@@ -16,7 +17,17 @@ export default function WalletBar() {
             <Button 
               className="mr-2 text-sm xs:text-lg p-2"
               variant="white">
-              Learn how to purchase
+              <div className="flex items-center">
+                <Image 
+                  layout="fixed"
+                  height="35"
+                  width="35"
+                  src="/small-eth.webp"
+                />
+                <span className="text-xl font-bold"> 
+                  Price Trends
+                </span>
+              </div>
             </Button>
           </div>
           <div>

@@ -5,7 +5,8 @@ import { CourseFilter, ManagedCourseCard } from "@components/ui/course";
 import { BaseLayout } from "@components/ui/layout";
 import { MarketHeader } from "@components/ui/marketplace";
 import { normalizeOwnedCourse } from "@utils/normalize";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { withToast } from "@utils/toast";
 
 const VerificationInput = ({onVerify}) => {
   const [ email, setEmail ] = useState("")
@@ -40,6 +41,9 @@ export default function ManagedCourses() {
   const { managedCourses } = useManagedCourses(account)
 
   const verifyCourse = (email, {hash, proof}) => {
+    if(!email) {
+      return
+    }
     const emailHash = web3.utils.sha3(email)
     const proofToCheck = web3.utils.soliditySha3(
       { type: "bytes32", value: emailHash },
@@ -59,20 +63,21 @@ export default function ManagedCourses() {
 
   const changeCourseState = async (courseHash, method) => {
     try {
-      await contract.methods[method](courseHash).send({
+      const result =  await contract.methods[method](courseHash).send({
         from: account.data
       })
+      return result
     } catch(e){
-      console.error(e.message)
+      throw new Error(e.message)
     }
   }
 
   const activateCourse = async courseHash => {
-    changeCourseState(courseHash, "activateItem")
+    withToast(changeCourseState(courseHash, "activateItem"))
   }
 
   const deactivateCourse = async courseHash => {
-    changeCourseState(courseHash, "deActivateItem")
+    withToast(changeCourseState(courseHash, "deActivateItem"))
   }
 
   const searchCourse = async hash => {
@@ -171,9 +176,11 @@ export default function ManagedCourses() {
         }
         {
           filteredCourses?.length === 0 && 
-          <Message type="warning">
-            No orders to display
-          </Message>
+          <div  className="w-1/2">
+            <Message type="warning">
+              No orders to display
+            </Message>
+          </div>
         }
       </section>
     </>

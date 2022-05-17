@@ -60,7 +60,7 @@ export default function Navbar() {
         </nav>
       </div>
       { account.data &&
-        !pathname.includes("/marketplace") &&
+        !pathname.includes("/marketplace") && !pathname.includes("/lb") &&
       <div className="flex justify-end pt-1 sm:px-6 lg:px-8">
         <div className="text-white bg-indigo-600 rounded-md p-2">
         { account.data }

@@ -16,6 +16,8 @@ contract ItemMarketPlace {
         State state;
     } 
 
+    bool public terminated = false;
+
     mapping(bytes32 => Item) private ownedItems; //ItemHash => Item Data
     mapping(uint => bytes32) private ownedItemHash; //ItemID => ItemHash
 
@@ -49,11 +51,64 @@ contract ItemMarketPlace {
         _;
     }
 
+    modifier onlyWhenNotTerminated {
+        require(!terminated);
+        _;
+    }
+
+    modifier onlyWhenTerminated {
+        require(terminated);
+        _;
+    }
+
+    receive() external payable {}
+
+    function withdraw(uint amount)
+        external
+        onlyOwner
+    {
+        (bool success, ) = owner.call{value: amount}("");
+        require(success, "Transfer failed");
+    }
+
+    function emergencyWithdraw()
+        external
+        onlyOwner
+        onlyWhenTerminated
+    {
+        (bool success, ) = owner.call{value: address(this).balance}("");
+        require(success, "Transfer failed");
+    }
+
+    function selfDestruct()
+        external
+        onlyWhenTerminated
+        onlyOwner
+    {
+        selfdestruct(owner);
+    }
+
+    function terminateContract()
+        external
+        onlyOwner
+    {
+        terminated = true;
+    }
+
+    function resumeContract() 
+        external
+        onlyOwner
+    {
+        terminated = false;
+    }
+        
+
     function purchaseItem(
         bytes16 ItemId,
         bytes32 proof)
         external
         payable
+        onlyWhenNotTerminated
     {
         bytes32 ItemHash = keccak256(abi.encodePacked(ItemId, msg.sender));
         if(hasItemOwnership(ItemHash)) {
@@ -67,6 +122,7 @@ contract ItemMarketPlace {
     function repurchaseItem(bytes32 itemHash) 
         external
         payable
+        onlyWhenNotTerminated
     {
         if (!isItemCreated(itemHash)){
             revert ItemIsNotCreated();
@@ -87,8 +143,9 @@ contract ItemMarketPlace {
     }
 
     function deActivateItem(bytes32 itemHash)
-    external
-    onlyOwner
+        external
+        onlyOwner
+        onlyWhenNotTerminated
     {
         if (!isItemCreated(itemHash)) {
         revert ItemIsNotCreated();
@@ -108,8 +165,9 @@ contract ItemMarketPlace {
     }
 
     function activateItem(bytes32 itemHash)
-    external
-    onlyOwner
+        external
+        onlyOwner
+        onlyWhenNotTerminated
     {
         if (!isItemCreated(itemHash)) {
         revert ItemIsNotCreated();
