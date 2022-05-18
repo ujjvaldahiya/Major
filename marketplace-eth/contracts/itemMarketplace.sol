@@ -8,6 +8,12 @@ contract ItemMarketPlace {
         Deactivated
     }
 
+    enum reqState {
+        Active,
+        Accepted,
+        Completed
+    }
+
     struct Item {
         uint id;
         uint price;
@@ -16,12 +22,26 @@ contract ItemMarketPlace {
         State state;
     } 
 
+    struct Request {
+        uint id;
+        uint price;
+        uint duration;
+        uint interest;
+        reqState state;
+        bytes32 proof;
+        address owner;
+        uint256 timestamp;
+    }
+
     bool public terminated = false;
 
     mapping(bytes32 => Item) private ownedItems; //ItemHash => Item Data
     mapping(uint => bytes32) private ownedItemHash; //ItemID => ItemHash
 
+    mapping(uint => Request) private requests; //RequestHash => Request Data
+
     uint private totalOwnedItems;
+    uint private totalRequests;
 
     address payable private owner;
 
@@ -117,6 +137,35 @@ contract ItemMarketPlace {
         uint id = totalOwnedItems++;
         ownedItemHash[id] = ItemHash;
         ownedItems[ItemHash] = Item({id: id, price: msg.value, proof: proof, owner: msg.sender, state: State.Purchased});
+    }
+
+    function createRequest(
+        uint duration,
+        uint interest,
+        bytes32 proof
+    )
+        external
+        payable
+        onlyWhenNotTerminated
+    {
+        uint id = totalRequests++;
+        requests[id] = Request({id: id, price: msg.value, proof: proof, owner: msg.sender, state: reqState.Active, duration: duration, interest: interest, timestamp: block.timestamp});
+    }
+
+    function getRequestCount()
+        external
+        view
+        returns (uint)
+    {
+        return totalRequests;
+    }
+
+    function getRequestByIndex(uint index)
+        external
+        view
+        returns (Request memory)
+    {
+        return requests[index];
     }
 
     function repurchaseItem(bytes32 itemHash) 

@@ -97,3 +97,51 @@
     opacity: 0; 
   }
 }
+
+.lineGraph{
+height: 600px;
+width: 900px;
+margin-bottom: 100px;
+}
+
+.LendingForm{
+}
+
+.LendingForm input{
+    display: block;
+    width: 90%;
+    padding: .5rem .8rem .5rem .8rem;
+    margin: .9vw 0 ;
+    border-radius: 5px;
+    border-width: medium;
+    border-color:#000000;
+    margin-left: 20px;
+    
+}
+.LendingForm label{
+    height: 15vh;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.LendingForm Button{
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.lendingFormDiv{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 50%;
+}
+
+.lendingFormDiv h3{
+  text-align: center;
+  font-size: 25px !important
+}
+
+.newCard {
+    height: 234px !important;
+}

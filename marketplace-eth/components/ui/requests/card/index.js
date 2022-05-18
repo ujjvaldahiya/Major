@@ -13,24 +13,22 @@ export default function Card({request, disabled, Footer}) {
             alt={request.title}
             />
         </div>
-        <div className="p-8 pb-4 flex-2">
-            <div 
-            className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-            {request.type}
+        <div className="p-4 pb-4 flex-2">
+            <div className="h-8 block mt-1 text-sm sm:text-lg leading-tight font-medium text-indigo-600">
+              {request.title}
             </div>
-            <Link href={`/requests/${request.slug}`}>
-            <a 
-                className="h-12 block mt-1 text-sm sm:text-lg leading-tight font-medium text-black hover:underline">
-                {request.title}
-            </a>
-            </Link>
-            <p 
-            className="mt-2 text-sm sm:text-base text-gray-500">
-            {request.description.substring(0,90)}...
-            </p>
+            <div className="h-8 block mt-1 text-sm sm:text-lg leading-tight font-medium bg-gray-100 text-black rounded-md">
+              Interest Rate: {request.type}
+            </div>
+            <div className="h-8 block mt-1 text-sm sm:text-lg leading-tight font-medium text-black">
+              Duration: {request.author}
+            </div>
+            <div className="h-8 block mt-1 text-sm sm:text-lg leading-tight font-medium bg-gray-100 text-black rounded-md">
+              Date Created: {request.createdAt}
+            </div>
             {
               Footer &&
-              <Footer />
+              <Footer/>
             }
         </div>
         </div>

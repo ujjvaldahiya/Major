@@ -1,7 +1,7 @@
 [
     {
       "id": "1410474",
-      "type": "Drama, Psychological, Techno-thriller",
+      "type": "Drama, Techno-thriller",
       "title": "Mr.Robot",
       "description": "Mr. Robot follows Elliot, a young programmer who works as a cyber-security engineer by day and as a vigilante hacker by night.",
       "coverImage": "https://flxt.tmsimg.com/assets/p11682476_b_h8_af.jpg",
@@ -18,13 +18,13 @@
     },
 	{
       "id": "1112431",
-      "type": "Sitcom, Comedy, Mokumentary, Satire",
+      "type": "Sitcom, Comedy, Mokumentary",
       "title": "The Office",
       "description": "A motley group of office workers go through hilarious misadventures at the Scranton, Pennsylvania, branch of the Dunder Mifflin Paper Company.",
       "coverImage": "https://m.media-amazon.com/images/M/MV5BMDNkOTE4NDQtMTNmYi00MWE0LWE4ZTktYTc0NzhhNWIzNzJiXkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_FMjpg_UX1000_.jpg",
       "author": "Filip Jerga",
       "link": "https://academy.eincode.com/courses/the-complete-unity-guide-3d-beginner-to-rpg-game-dev-in-c",
-      "slug": "the-complete-unity-guide-3d-beginner-to-rpg-game-dev-in-c",
+      "slug": "the-office",
       "wsl": [
         "Steve Carell, John Krasinski, Rainn Wilson, B.J. Novak",
         "Sitcom, Comedy, Mokumentary, Satire",
@@ -35,13 +35,13 @@
     },
     {
       "id": "1331625",
-      "type": "Thriller, Drama, Sci-fi, Mystery, Supernatural",
+      "type": "Thriller, Mystery, Supernatural",
       "title": "Dark",
       "description": "When two children go missing in a small German town, its sinful past is exposed along with the double lives and fractured relationships that exist among four families as they search for the kids.",
       "coverImage": "https://static.wikia.nocookie.net/dark-netflix/images/f/fd/Dark_Title_Screen.jpg/revision/latest/top-crop/width/360/height/360?cb=20171111233324",
       "author": "Filip Jerga",
       "link": "https://academy.eincode.com/courses/gatsby-js-developer-s-guide-important-parts-blog-app",
-      "slug": "gatsby-js-developer-s-guide-important-parts-blog-app",
+      "slug": "dark",
       "wsl": [
         "Louis Hoffman, Lisa Vicari, Oliver Masucci, Maja Schone",
         "Thriller, Drama, Mystery, Supernatural",
@@ -52,13 +52,13 @@
     },
     {
       "id": "985237",
-      "type": "Drama, Crime film, Thriller, Comedy Drama",
+      "type": "Drama, Crime film",
       "title": "Money Heist",
       "description": "A criminal mastermind who goes by The Professor has a plan to pull off the biggest heist in recorded history -- to print billions of euros in the Royal Mint of Spain. To help him carry out the ambitious plan, he recruits eight people with certain abilities and who have nothing to lose. The group of thieves take hostages to aid in their negotiations with the authorities, who strategize to come up with a way to capture The Professor. As more time elapses, the robbers prepare for a showdown with the police.",
       "coverImage": "https://resizing.flixster.com/fLiPKJwqtPJZ1ZFSwYl4-YoYaBQ=/ems.ZW1zLXByZC1hc3NldHMvdHZzZWFzb24vUlRUVjEwMTMyOTMud2VicA==",
       "author": "Filip Jerga",
       "link": "https://academy.eincode.com/courses/phaser-3-the-complete-guide-build-publish-games-in-js",
-      "slug": "phaser-3-the-complete-guide-build-publish-games-in-js",
+      "slug": "money-heist",
       "wsl": [
         "Alvaro Morte, Pedro Alonso, Ursula Corbero, Jaime Lorente",
 		    "Drama, Crime film, Thriller, Comedy Drama",
@@ -69,13 +69,13 @@
     },
     {
       "id": "925927",
-      "type": "Dark Comedy, Drama, Suspense, Crime film",
+      "type": "Suspense, Crime film",
       "title": "Breaking Bad",
       "description": "Walter White, a chemistry teacher, discovers that he has cancer and decides to get into the meth-making business to repay his medical debts. His priorities begin to change when he partners with Jesse.",
       "coverImage": "https://flxt.tmsimg.com/assets/p185846_b_v8_ad.jpg",
       "author": "Filip Jerga",
       "link": "https://academy.eincode.com/courses/electron-react-js-build-native-chat-app-with-javascript",
-      "slug": "electron-react-js-build-native-chat-app-with-javascript",
+      "slug": "breaking-bad",
       "wsl": [
         "Bryan Cranston, Aaron Paul, Anna Gunn, Krysten Ritter",
 		"Dark Comedy, Drama, Suspense, Crime film",
@@ -92,7 +92,7 @@
       "coverImage": "https://www.tvguide.com/a/img/catalog/provider/1/1/1-6482810627.jpg",
       "author": "Filip Jerga",
       "link": "https://academy.eincode.com/courses/vue-3-react-angular-guide-to-popular-frameworks",
-      "slug": "vue-3-react-angular-guide-to-popular-frameworks",
+      "slug": "the-big-bang-theory",
       "wsl": [
         "Kaley Cuoco, Jim Parsons, Johnny Galecki, Simon Helberg",
 		"Sitcom, Telivision Comedy",
@@ -103,13 +103,13 @@
     },
     {
       "id": "958960",
-      "type": "Drama, Thriller, Action, Adventure",
+      "type": "Thriller, Action",
       "title": "Game of Thrones",
       "description": "Nine noble families wage war against each other in order to gain control over the mythical land of Westeros. Meanwhile, a force is rising after millenniums and threatens the existence of living men.",
       "coverImage": "https://m.media-amazon.com/images/M/MV5BYTRiNDQwYzAtMzVlZS00NTI5LWJjYjUtMzkwNTUzMWMxZTllXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_.jpg",
 	  "author": "Filip Jerga",
       "link": "https://academy.eincode.com/courses/vue-js-3-the-practical-guide",
-      "slug": "vue-js-3-the-practical-guide",
+      "slug": "game-of-thrones",
       "wsl": [
         "Emilia Clarke, Maisie Williams, Kit Harrington, Sophie Turner",
 		"Drama, Thriller, Action, Adventure",
@@ -126,7 +126,7 @@
       "coverImage": "https://m.media-amazon.com/images/M/MV5BNDVkYjU0MzctMWRmZi00NTkxLTgwZWEtOWVhYjZlYjllYmU4XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg",
       "author": "Filip Jerga",
       "link": "https://academy.eincode.com/courses/complete-next-js-with-react-node-beautiful-portfolio-app",
-      "slug": "complete-next-js-with-react-node-beautiful-portfolio-app",
+      "slug": "friends",
       "wsl": [
         "Mathew Perry, David Schwimmer, Courtney Cox, Jennifer Aniston",
 		"Sitcom, Comedy, Romance",
@@ -137,13 +137,13 @@
     },
     {
       "id": "846120",
-      "type": "Drama, Crime film, Bibliography",
+      "type": "Drama, Crime film",
       "title": "Narcos",
       "description": "Netflix chronicles the rise of the cocaine trade in Colombia and the gripping real-life stories of drug kingpins of the late '80s in this raw, gritty original series. Also detailed are the actions taken by law enforcement as they battle in the war on drugs, targeting notorious and powerful figures that include drug lord Pablo Escobar. As efforts are made to control cocaine, one of the world's most valuable commodities, the many entities involved -- legal, political, police, military and civilian -- find themselves in conflict.",
       "coverImage": "https://flxt.tmsimg.com/assets/p11993088_b_v8_aa.jpg",
       "author": "Filip Jerga",
       "link": "https://academy.eincode.com/courses/react-angular-node-in-depth-guide-beginner-to-pro-2020",
-      "slug": "react-angular-node-in-depth-guide-beginner-to-pro-2020",
+      "slug": "narcos",
       "wsl": [
         "Wagner Moura, Pedro Pascal, Boyd Holbrook, Jose Maria Yazpik",
 		"Drama, Crime film, Bibliography",
@@ -154,13 +154,13 @@
     },
     {
       "id": "848148",
-      "type": "Dark Comedy, Sitcom, Adventure fiction",
+      "type": "Dark Comedy, Sitcom",
       "title": "Rick and Morty",
       "description": "Rick, an alcoholic sociopath and scientist, lives with his daughter Beth's family. Apart from building gadgets, he takes his morally right but dimwit grandson Morty on absurd intergalactic adventures.",
       "coverImage": "https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_.jpg",
 	  "author": "Filip Jerga",
       "link": "https://academy.eincode.com/courses/react-js-firebase-complete-course-incl-chat-application",
-      "slug": "react-js-firebase-complete-course-incl-chat-application",
+      "slug": "rick-and-morty",
       "wsl": [
         "Justin Roiland, Dan Harmon, Spencer Grammer, Chris Parnell",
 		"Dark Comedy, Sitcom, Adventure fiction, Animated sitcom",
